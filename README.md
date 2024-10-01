@@ -71,10 +71,12 @@ convert_to_cli({
     )
   )
 })
-#> cli::cli_abort(c(
-#>   "The model only has prediction types {paste0(pred_types, collapse = ', ')}.",
-#>   "i" = "Did you fit the model with {.code silly_head = TRUE}?"
-#> ))
+#> cli::cli_abort(
+#>   c(
+#>     "The model only has prediction types {pred_types}.",
+#>     "i" = "Did you fit the model with {.code silly_head = TRUE}?"
+#>   )
+#> )
 ```
 
 It seems to have a decent hold on sprintf-style statements, too:
