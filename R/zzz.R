@@ -5,6 +5,12 @@
   if (rlang::is_installed("dotenv")) {
     library(dotenv)
   }
+
+  cli_system_prompt <-
+    paste0(
+      readLines(system.file("prompt.md", package = "clipal")),
+      collapse = "\n"
+    )
 }
 
 # nocov end

@@ -21,7 +21,7 @@
 cli_pal <- function(fn = "new_chat_claude", ..., .ns = "elmer") {
   args <- list(...)
 
-  args$system_prompt <- paste0(readLines("inst/prompt.md"), collapse = "\n")
+  args$system_prompt <- cli_system_prompt
 
   cli_pal <- rlang::eval_bare(rlang::call2(fn, !!!args, .ns = "elmer"))
 
