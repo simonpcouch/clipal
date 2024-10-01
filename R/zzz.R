@@ -6,11 +6,14 @@
     library(dotenv)
   }
 
-  cli_system_prompt <-
-    paste0(
-      readLines(system.file("prompt.md", package = "clipal")),
-      collapse = "\n"
-    )
+  rlang::env_bind(
+    rlang::ns_env("clipal"),
+    cli_system_prompt =
+      paste0(
+        readLines(system.file("prompt.md", package = "clipal")),
+        collapse = "\n"
+      )
+  )
 }
 
 # nocov end
