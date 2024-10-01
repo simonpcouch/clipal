@@ -4,7 +4,7 @@
 \alias{convert_to_cli}
 \title{Convert erroring code to use cli}
 \usage{
-convert_to_cli(expr, cli_pal)
+convert_to_cli(expr, cli_pal = .last_cli_pal)
 }
 \arguments{
 \item{cli_pal}{A cli pal created with \code{\link[=cli_pal]{cli_pal()}}.}
@@ -18,6 +18,6 @@ Convert erroring code to use cli
 \dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 cli_pal <- cli_pal()
 
-convert_to_cli(stop("An error message."), cli_pal)
+convert_to_cli(stop("An error message."))
 \dontshow{\}) # examplesIf}
 }

@@ -47,10 +47,9 @@ cli_pal <- cli_pal()
 The `convert_to_cli()` function takes an R expression that raises a condition and converts it to use cli. At its simplest:
 
 ```{r}
-convert_to_cli(stop("An error message."), cli_pal)
+convert_to_cli(stop("An error message."))
 ```
-
-The function can handle surprisingly complex erroring code, though:
+The function knows to look for the most recently defined cli pal, but you can pass one manually via `convert_to_cli(cli_pal)` if you please. It can handle surprisingly complex erroring code:
 
 ```{r}
 convert_to_cli(
@@ -62,8 +61,7 @@ convert_to_cli(
         "fit the model with `silly_head = TRUE`?"
       )
     )
-  },
-  cli_pal
+  }
 )
 ```
 

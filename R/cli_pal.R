@@ -23,7 +23,11 @@ cli_pal <- function(fn = "new_chat_claude", ..., .ns = "elmer") {
 
   args$system_prompt <- paste0(readLines("inst/prompt.md"), collapse = "\n")
 
-  rlang::eval_bare(rlang::call2(fn, !!!args, .ns = "elmer"))
+  cli_pal <- rlang::eval_bare(rlang::call2(fn, !!!args, .ns = "elmer"))
+
+  .stash_last_cli_pal(cli_pal)
+
+  cli_pal
 }
 
 # TODO: a print method. it'd be nice to just be able to set

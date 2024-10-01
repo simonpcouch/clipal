@@ -52,14 +52,16 @@ The `convert_to_cli()` function takes an R expression that raises a
 condition and converts it to use cli. At its simplest:
 
 ``` r
-convert_to_cli(stop("An error message."), cli_pal)
+convert_to_cli(stop("An error message."))
 #> cli::cli_abort(
 #>   "An error message.",
 #>   call = rlang::call2("TODO: add call here")
 #> )
 ```
 
-The function can handle surprisingly complex erroring code, though:
+The function knows to look for the most recently defined cli pal, but
+you can pass one manually via `convert_to_cli(cli_pal)` if you please.
+It can handle surprisingly complex erroring code:
 
 ``` r
 convert_to_cli(
@@ -71,12 +73,11 @@ convert_to_cli(
         "fit the model with `silly_head = TRUE`?"
       )
     )
-  },
-  cli_pal
+  }
 )
 #> cli::cli_abort(
 #>   c(
-#>     "The model only has prediction types {types}.",
+#>     "The model only has prediction types {pred_types}.",
 #>     "i" = "Did you fit the model with `silly_head = TRUE`?"
 #>   ),
 #>   call = rlang::call2("TODO: add call here")

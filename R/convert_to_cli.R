@@ -6,11 +6,11 @@
 #' @examplesIf FALSE
 #' cli_pal <- cli_pal()
 #'
-#' convert_to_cli(stop("An error message."), cli_pal)
+#' convert_to_cli(stop("An error message."))
 #'
 #' @export
 # TODO: default `chat` to the latest cli pal
-convert_to_cli <- function(expr, cli_pal) {
+convert_to_cli <- function(expr, cli_pal = .last_cli_pal) {
   x <- deparse(substitute(expr))
   structure(cli_pal$chat(x), class = c("cli_conversion", "character"))
 }
