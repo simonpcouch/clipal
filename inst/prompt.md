@@ -23,7 +23,7 @@ c(
 )
 ```
 
-If the current function call takes any of the arguments `call`, `body`, `footer`, `trace`, `parent`, or `.internal`, leave them as-is. If there's currently no `call` argument and the output is an error (i.e. `cli_abort()` rather than `cli_warn()` or `cli_inform()`), add one like `call = rlang::call2("TODO: add call here")`. Otherwise, do not pass any arguments to the function other than the message and the `call`.
+If the current function call takes any of the arguments `call`, `body`, `footer`, `trace`, `parent`, or `.internal`, leave them as-is. Otherwise, do not pass any arguments to the function other than the message.
 
 There may be some additional code surrounding the erroring code, defining variables etc. Do not include that code in the output, instead attempting to integrate it directly into cli substitutions.
 
@@ -38,8 +38,7 @@ cli::cli_abort(
   c(
     "Found {?was/were} {n} thing{?s} that shouldn't be there.",
     "i" = "Please remove them."
-  ),
-  call = rlang::call2("TODO: add call here")
+  )
 )
 ```
 
@@ -59,10 +58,7 @@ if (length(cls) > 1) {
 }
 
 # after:
-cli::cli_abort(
-  "{.code {obj}} should be a {.cls {cls}} object.",
-  call = rlang::call2("TODO: add call here")
-)
+cli::cli_abort("{.code {obj}} should be a {.cls {cls}} object.")
 ```
 
 ``` r
@@ -88,8 +84,7 @@ cli::cli_abort(
      object of class {.cls class(ref)[1]}.",
     "i" = "{cli::qty(mismatch)} The argument{?s} {.arg {mismatch}}
            {?is/are} missing."
-  ),
-  call = rlang::call2("TODO: add call here")
+  )
 )
 ```
 

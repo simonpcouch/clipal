@@ -53,10 +53,7 @@ condition and converts it to use cli. At its simplest:
 
 ``` r
 convert_to_cli(stop("An error message."))
-#> cli::cli_abort(
-#>   "An error message.",
-#>   call = rlang::call2("TODO: add call here")
-#> )
+#> cli::cli_abort("An error message.")
 ```
 
 The function knows to look for the most recently defined cli pal, but
@@ -74,13 +71,10 @@ convert_to_cli({
     )
   )
 })
-#> cli::cli_abort(
-#>   c(
-#>     "The model only has prediction types {pred_types}.",
-#>     "i" = "Did you fit the model with {.code silly_head = TRUE}?"
-#>   ),
-#>   call = rlang::call2("TODO: add call here")
-#> )
+#> cli::cli_abort(c(
+#>   "The model only has prediction types {paste0(pred_types, collapse = ', ')}.",
+#>   "i" = "Did you fit the model with {.code silly_head = TRUE}?"
+#> ))
 ```
 
 It seems to have a decent hold on sprintf-style statements, too:
@@ -89,10 +83,7 @@ It seems to have a decent hold on sprintf-style statements, too:
 convert_to_cli({
   abort(sprintf("No such '%s' function: `%s()`.", package, name))
 })
-#> cli::cli_abort(
-#>   "No such {.pkg {package}} function: {.fn {name}()}.",
-#>   call = rlang::call2("TODO: add call here")
-#> )
+#> cli::cli_abort("No such {.pkg {package}} function: {.fn {name}()}.")
 ```
 
 TODO: show by function, file, and package…
