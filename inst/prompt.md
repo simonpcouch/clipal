@@ -23,7 +23,9 @@ c(
 )
 ```
 
-If the current function call takes any of the arguments `call`, `body`, `footer`, `trace`, `parent`, or `.internal`, leave them as-is. If there's currently no `call` argument, add one like `call = rlang::call2("TODO: add call here")`.
+If the current function call takes any of the arguments `call`, `body`, `footer`, `trace`, `parent`, or `.internal`, leave them as-is. If there's currently no `call` argument, add one like `call = rlang::call2("TODO: add call here")`. Otherwise, do not pass any arguments to the function other than the message and the `call`.
+
+There may be some additional code surrounding the erroring code, defining variables etc. Do not include that code in the output, instead attempting to integrate it directly into cli substitutions.
 
 Here are some examples:
 

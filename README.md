@@ -64,10 +64,11 @@ The function can handle surprisingly complex erroring code, though:
 ``` r
 convert_to_cli(
   {
+    types <- paste0(pred_types, collapse = ", ")
     rlang::abort(
       glue::glue(
-        "`ranger` model does not appear to use class probabilities. Was ",
-        "the model fit with `probability = TRUE`?"
+        "The model only has prediction types {types}. Did you ",
+        "fit the model with `silly_head = TRUE`?"
       )
     )
   },
@@ -75,8 +76,8 @@ convert_to_cli(
 )
 #> cli::cli_abort(
 #>   c(
-#>     "`ranger` model does not appear to use class probabilities.",
-#>     "i" = "Was the model fit with `probability = TRUE`?"
+#>     "The model only has prediction types {types}.",
+#>     "i" = "Did you fit the model with `silly_head = TRUE`?"
 #>   ),
 #>   call = rlang::call2("TODO: add call here")
 #> )
