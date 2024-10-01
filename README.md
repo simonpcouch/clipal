@@ -76,8 +76,8 @@ convert_to_cli({
 })
 #> cli::cli_abort(
 #>   c(
-#>     "The model only has prediction types {types}.",
-#>     "i" = "Did you fit the model with `silly_head = TRUE`?"
+#>     "The model only has prediction types {pred_types}.",
+#>     "i" = "Did you fit the model with {.code silly_head = TRUE}?"
 #>   ),
 #>   call = rlang::call2("TODO: add call here")
 #> )
@@ -90,7 +90,7 @@ convert_to_cli({
   abort(sprintf("No such '%s' function: `%s()`.", package, name))
 })
 #> cli::cli_abort(
-#>   "No such '{package}' function: `{name}()`.",
+#>   "No such {.pkg {package}} function: {.fn {name}()}.",
 #>   call = rlang::call2("TODO: add call here")
 #> )
 ```

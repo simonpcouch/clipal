@@ -23,7 +23,7 @@ c(
 )
 ```
 
-If the current function call takes any of the arguments `call`, `body`, `footer`, `trace`, `parent`, or `.internal`, leave them as-is. If there's currently no `call` argument, add one like `call = rlang::call2("TODO: add call here")`. Otherwise, do not pass any arguments to the function other than the message and the `call`.
+If the current function call takes any of the arguments `call`, `body`, `footer`, `trace`, `parent`, or `.internal`, leave them as-is. If there's currently no `call` argument and the output is an error (i.e. `cli_abort()` rather than `cli_warn()` or `cli_inform()`), add one like `call = rlang::call2("TODO: add call here")`. Otherwise, do not pass any arguments to the function other than the message and the `call`.
 
 There may be some additional code surrounding the erroring code, defining variables etc. Do not include that code in the output, instead attempting to integrate it directly into cli substitutions.
 
@@ -38,6 +38,56 @@ cli::cli_abort(
   c(
     "Found {?was/were} {n} thing{?s} that shouldn't be there.",
     "i" = "Please remove them."
+  ),
+  call = rlang::call2("TODO: add call here")
+)
+```
+
+``` r
+# before:
+if (length(cls) > 1) {
+    rlang::abort(
+    glue::glue(
+      "`{obj}` should be one of the following classes: ",
+      glue::glue_collapse(glue::glue("'{cls}'"), sep = ", ")
+    )
+  )
+} else {
+  rlang::abort(
+    glue::glue("`{obj}` should be a {cls} object")
+  )
+}
+
+# after:
+cli::cli_abort(
+  "{.code {obj}} should be a {.cls {cls}} object.",
+  call = rlang::call2("TODO: add call here")
+)
+```
+
+``` r
+# before:
+rlang::abort(
+  c(
+    glue::glue(
+      "Object of class `{class(x)[1]}` cannot be coerced to ",
+      "object of class `{class(ref)[1]}`."
+    ),
+    "The following arguments are missing:",
+    glue::glue_collapse(
+      glue::single_quote(mismatch),
+      sep = ", ", last = ", and "
+    )
+  )
+)
+
+# after:
+cli::cli_abort(
+  c(
+    "Object of class {.cls class(x)[1]} cannot be coerced to
+     object of class {.cls class(ref)[1]}.",
+    "i" = "{cli::qty(mismatch)} The argument{?s} {.arg {mismatch}}
+           {?is/are} missing."
   ),
   call = rlang::call2("TODO: add call here")
 )
