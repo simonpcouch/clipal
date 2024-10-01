@@ -119,7 +119,7 @@ The default theme defines the following inline classes:
 -   `envvar` for the name of an environment variable.
 -   `field` for a generic field, e.g. in a named list.
 -   `file` for a file name.
--   `fn` for a function name.
+-   `fn` for a function name. Note that there's no need to supply parentheses after a value when using this. e.g. this is good: `{.fn {function_name}}`, these options are bad: `{.fn {function_name}()}` or \``{.fn {function_name}}()`\`.
 -   `fun` same as `fn`.
 -   `kbd` for a keyboard key.
 -   `key` same as `kbd`.

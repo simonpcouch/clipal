@@ -71,12 +71,10 @@ convert_to_cli({
     )
   )
 })
-#> cli::cli_abort(
-#>   c(
-#>     "The model only has prediction types {pred_types}.",
-#>     "i" = "Did you fit the model with {.code silly_head = TRUE}?"
-#>   )
-#> )
+#> cli::cli_abort(c(
+#>   "The model only has prediction types {pred_types}.",
+#>   "i" = "Did you fit the model with {.code silly_head = TRUE}?"
+#> ))
 ```
 
 It seems to have a decent hold on sprintf-style statements, too:
@@ -85,7 +83,7 @@ It seems to have a decent hold on sprintf-style statements, too:
 convert_to_cli({
   abort(sprintf("No such '%s' function: `%s()`.", package, name))
 })
-#> cli::cli_abort("No such {.pkg {package}} function: {.fn {name}()}.")
+#> cli::cli_abort("No such {.pkg {package}} function: {.fn {name}}.")
 ```
 
 TODO: show by function, file, and package…
