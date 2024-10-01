@@ -21,4 +21,4 @@ Imports:
     rlang,
     withr
 Remotes:
-    hadley/elmer
+    hadley/elmer#42

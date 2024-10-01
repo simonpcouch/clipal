@@ -4,20 +4,20 @@
 \alias{convert_to_cli}
 \title{Convert erroring code to use cli}
 \usage{
-convert_to_cli(x, clipal)
+convert_to_cli(expr, cli_pal)
 }
 \arguments{
-\item{x}{Lines of code that raise an error, as a character vector.}
+\item{cli_pal}{A cli pal created with \code{\link[=cli_pal]{cli_pal()}}.}
 
-\item{chat}{An elmer chat. Note that the system prompt will be overwritten.}
+\item{x}{Lines of code that raise an error, as an expression.}
 }
 \description{
 Convert erroring code to use cli
 }
 \examples{
 \dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-clipal <- new_clipal()
+cli_pal <- cli_pal()
 
-convert_to_cli('stop("An error message.")', clipal)
+convert_to_cli(stop("An error message."), cli_pal)
 \dontshow{\}) # examplesIf}
 }

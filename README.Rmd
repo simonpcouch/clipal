@@ -36,13 +36,43 @@ pak::pak("simonpcouch/clipal")
 
 ## Example
 
+The `cli_pal()` function instantiates a cli pal (a light wrapper around an elmer chat).
+
 ```{r}
 library(clipal)
 
-clipal <- clipal()
-
-convert_to_cli('stop("An error message.")', clipal)
+cli_pal <- cli_pal()
 ```
+
+The `convert_to_cli()` function takes an R expression that raises a condition and converts it to use cli. At its simplest:
+
+```{r}
+convert_to_cli(stop("An error message."), cli_pal)
+```
+
+The function can handle surprisingly complex erroring code, though:
+
+```{r}
+convert_to_cli(
+  {
+    types <- paste0(pred_types, collapse = ", ")
+    rlang::abort(
+      glue::glue(
+        "The model only has prediction types {types}. Did you ",
+        "fit the model with `silly_head = TRUE`?"
+      )
+    )
+  },
+  cli_pal
+)
+```
+
+
+
+
+
+
+
 
 TODO: show by function, file, and package...
 

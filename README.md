@@ -39,13 +39,47 @@ pak::pak("simonpcouch/clipal")
 
 ## Example
 
+The `cli_pal()` function instantiates a cli pal (a light wrapper around
+an elmer chat).
+
 ``` r
 library(clipal)
 
-clipal <- clipal()
+cli_pal <- cli_pal()
+```
 
-convert_to_cli('stop("An error message.")', clipal)
-#> cli::cli_abort("An error message.", call = rlang::call2("TODO: add call here"))
+The `convert_to_cli()` function takes an R expression that raises a
+condition and converts it to use cli. At its simplest:
+
+``` r
+convert_to_cli(stop("An error message."), cli_pal)
+#> cli::cli_abort(
+#>   "An error message.",
+#>   call = rlang::call2("TODO: add call here")
+#> )
+```
+
+The function can handle surprisingly complex erroring code, though:
+
+``` r
+convert_to_cli(
+  {
+    rlang::abort(
+      glue::glue(
+        "`ranger` model does not appear to use class probabilities. Was ",
+        "the model fit with `probability = TRUE`?"
+      )
+    )
+  },
+  cli_pal
+)
+#> cli::cli_abort(
+#>   c(
+#>     "`ranger` model does not appear to use class probabilities.",
+#>     "i" = "Was the model fit with `probability = TRUE`?"
+#>   ),
+#>   call = rlang::call2("TODO: add call here")
+#> )
 ```
 
 TODO: show by function, file, and package…

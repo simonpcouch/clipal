@@ -2,6 +2,7 @@
 % Please edit documentation in R/clipal-package.R
 \docType{package}
 \name{clipal-package}
+\alias{clipal}
 \alias{clipal-package}
 \title{clipal: Convert to cli errors}
 \description{

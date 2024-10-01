@@ -1,16 +1,18 @@
 #' Convert erroring code to use cli
 #'
-#' @param x Lines of code that raise an error, as a character vector.
-#' @param chat An elmer chat. Note that the system prompt will be overwritten.
+#' @param x Lines of code that raise an error, as an expression.
+#' @param cli_pal A cli pal created with [cli_pal()].
 #'
 #' @examplesIf FALSE
-#' clipal <- new_clipal()
+#' cli_pal <- cli_pal()
 #'
-#' convert_to_cli('stop("An error message.")', clipal)
+#' convert_to_cli(stop("An error message."), cli_pal)
 #'
 #' @export
-convert_to_cli <- function(x, clipal) {
-  structure(clipal$chat(x), class = c("cli_conversion", "character"))
+# TODO: default `chat` to the latest cli pal
+convert_to_cli <- function(expr, cli_pal) {
+  x <- deparse(substitute(expr))
+  structure(cli_pal$chat(x), class = c("cli_conversion", "character"))
 }
 
 #' @export
