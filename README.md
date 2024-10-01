@@ -61,25 +61,36 @@ convert_to_cli(stop("An error message."))
 
 The function knows to look for the most recently defined cli pal, but
 you can pass one manually via `convert_to_cli(cli_pal)` if you please.
-It can handle surprisingly complex erroring code:
+It can handle surprisingly complex erroring code, too. For example, some
+`paste0()` enumeration and strange line breaking is no issue:
 
 ``` r
-convert_to_cli(
-  {
-    types <- paste0(pred_types, collapse = ", ")
-    rlang::abort(
-      glue::glue(
-        "The model only has prediction types {types}. Did you ",
-        "fit the model with `silly_head = TRUE`?"
-      )
+convert_to_cli({
+  types <- paste0(pred_types, collapse = ", ")
+  rlang::abort(
+    glue::glue(
+      "The model only has prediction types {types}. Did you ",
+      "fit the model with `silly_head = TRUE`?"
     )
-  }
-)
+  )
+})
 #> cli::cli_abort(
 #>   c(
-#>     "The model only has prediction types {pred_types}.",
+#>     "The model only has prediction types {types}.",
 #>     "i" = "Did you fit the model with `silly_head = TRUE`?"
 #>   ),
+#>   call = rlang::call2("TODO: add call here")
+#> )
+```
+
+It seems to have a decent hold on sprintf-style statements, too:
+
+``` r
+convert_to_cli({
+  abort(sprintf("No such '%s' function: `%s()`.", package, name))
+})
+#> cli::cli_abort(
+#>   "No such '{package}' function: `{name}()`.",
 #>   call = rlang::call2("TODO: add call here")
 #> )
 ```
