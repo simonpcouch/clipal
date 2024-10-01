@@ -20,9 +20,14 @@ developer and more visually pleasing as a user.
 In some cases, transitioning is as simple as Finding + Replacing
 `rlang::abort()` to `cli::cli_abort()`. In others, there’s a mess of
 ah-hoc pluralization, `paste0()`s, glue interpolations, and other
-assorted nonsense to sort through. Total pain in the \*\*\*. clipal
-(“c-l-i pal”) is an RStudio add-in that helps you convert your R package
-to use cli for error messages.
+assorted nonsense to sort through. Total pain, especially with thousands
+upon thousands of error messages thrown across the tidyverse, r-lib, and
+tidymodels organizations.
+
+clipal (“c-l-i pal”) is an RStudio add-in that helps you convert your R
+package to use cli for error messages. It’s vaguely correct most of the
+time, and greatly speeds up the process for converting error messages to
+cli, in my experience.
 
 ## Installation
 
