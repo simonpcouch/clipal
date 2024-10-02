@@ -31,11 +31,19 @@ cli, in my experience.
 
 ## Installation
 
-You can install the development version of clipal like so:
+You can install clipal like so:
 
 ``` r
 pak::pak("simonpcouch/clipal")
 ```
+
+Then,
+
+- Ensure that you have an `ANTHROPIC_API_KEY` set in your
+  [`.env`](https://github.com/gaborcsardi/dotenv). If you’re using a
+  different LLM to power the cli pal, see `?cli_pal()` to set default
+  metadata on that model.
+- Assign the “Convert to cli” addin the shortcut “Ctrl+Shift+C”.
 
 ## Example
 
@@ -44,7 +52,8 @@ pak::pak("simonpcouch/clipal")
 The package provides an RStudio add-in “Convert to cli” that we suggest
 registering with the keybinding “Ctrl+Shift+C”. To do so, navigate to
 Tools \> Modify Keyboard Shortcuts \> Search “Convert to cli”, and add
-the keybinding. After selecting some code, press the keyboard:
+the keybinding. After selecting some code, press the keyboard shortcut
+and wait a moment:
 
 ![](inst/figs/addin.gif)
 
@@ -87,10 +96,12 @@ convert_to_cli({
     )
   )
 })
-#> cli::cli_abort(c(
-#>   "The model only has prediction types {pred_types}.",
-#>   "i" = "Did you fit the model with {.code silly_head = TRUE}?"
-#> ))
+#> cli::cli_abort(
+#>   c(
+#>     "The model only has prediction types {pred_types}.",
+#>     "i" = "Did you fit the model with {.code silly_head = TRUE}?"
+#>   )
+#> )
 ```
 
 It seems to have a decent hold on sprintf-style statements, too:
@@ -99,7 +110,5 @@ It seems to have a decent hold on sprintf-style statements, too:
 convert_to_cli({
   abort(sprintf("No such '%s' function: `%s()`.", package, name))
 })
-#> cli::cli_abort("No such {.pkg {package}} function: {.fn {name}}().")
+#> cli::cli_abort("No such {.pkg {package}} function: {.fn {name}}.")
 ```
-
-TODO: show by function, file, and package…

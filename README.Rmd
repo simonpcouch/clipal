@@ -28,17 +28,22 @@ clipal ("c-l-i pal") is an RStudio add-in that helps you convert your R package 
 
 ## Installation
 
-You can install the development version of clipal like so:
+You can install clipal like so:
 
 ``` r
 pak::pak("simonpcouch/clipal")
 ```
 
+Then,
+
+* Ensure that you have an `ANTHROPIC_API_KEY` set in your [`.env`](https://github.com/gaborcsardi/dotenv). If you're using a different LLM to power the cli pal, see `?cli_pal()` to set default metadata on that model. 
+* Assign the "Convert to cli" addin the shortcut "Ctrl+Shift+C".
+
 ## Example
 
 ### RStudio Add-in
 
-The package provides an RStudio add-in "Convert to cli" that we suggest registering with the keybinding "Ctrl+Shift+C". To do so, navigate to Tools > Modify Keyboard Shortcuts > Search "Convert to cli", and add the keybinding. After selecting some code, press the keyboard:
+The package provides an RStudio add-in "Convert to cli" that we suggest registering with the keybinding "Ctrl+Shift+C". To do so, navigate to Tools > Modify Keyboard Shortcuts > Search "Convert to cli", and add the keybinding. After selecting some code, press the keyboard shortcut and wait a moment:
 
 ![](inst/figs/addin.gif)
 
@@ -57,6 +62,7 @@ By default, `cli_pal()` uses Claude Sonnet 3.5 via `elmer::new_chat_claude()`, t
 ```{r}
 convert_to_cli(stop("An error message."))
 ```
+
 The function knows to look for the most recently defined cli pal, but you can pass one manually via `convert_to_cli(cli_pal)` if you please. 
 
 It can handle surprisingly complex erroring code, too. For example, some `paste0()` enumeration and strange line breaking is no issue:
@@ -80,9 +86,3 @@ convert_to_cli({
   abort(sprintf("No such '%s' function: `%s()`.", package, name))
 })
 ```
-
-
-TODO: show by function, file, and package...
-
-
-

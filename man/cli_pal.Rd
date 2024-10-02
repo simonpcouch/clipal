@@ -4,13 +4,20 @@
 \alias{cli_pal}
 \title{Create a cli pal}
 \usage{
-cli_pal(fn = "new_chat_claude", ..., .ns = "elmer")
+cli_pal(
+  fn = getOption(".clipal_fn", default = "new_chat_claude"),
+  ...,
+  .ns = "elmer"
+)
 }
 \arguments{
 \item{fn}{A \verb{new_*()} function, likely from the elmer package. Defaults
-to \code{\link[elmer:new_chat_claude]{elmer::new_chat_claude()}}.}
+to \code{\link[elmer:new_chat_claude]{elmer::new_chat_claude()}}. To set a persistent alternative default,
+set the \code{.clipal_fn} option; see examples below.}
 
-\item{...}{Additional arguments to \code{fn}.}
+\item{...}{Additional arguments to \code{fn}. The \code{system_prompt} argument will
+be ignored if supplied. To set persistent defaults,
+set the \code{.clipal_args} option; see examples below.}
 
 \item{.ns}{The package that the \verb{new_*()} function is exported from.}
 }
@@ -23,10 +30,18 @@ a custom system prompt.
 # to create a chat with claude:
 clipal()
 
-# or with OpenAI's o1-mini:
+# or with OpenAI's 4o-mini:
 clipal(
   "new_chat_openai",
   model = "gpt-4o-mini"
+)
+
+# to set OpenAI's 4o-mini as the default, for example, set the
+# following options (possibly in your .Rprofile, if you'd like
+# them to persist across sessions):
+options(
+  .clipal_fn = "new_chat_openai",
+  .clipal_args = list(model = "gpt-4o-mini")
 )
 \dontshow{\}) # examplesIf}
 }
