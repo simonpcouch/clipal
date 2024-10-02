@@ -40,9 +40,12 @@ cli_pal <- function(fn = getOption(".clipal_fn", default = "new_chat_claude"), .
 
   .stash_last_cli_pal(cli_pal)
 
-  cli_pal
+  structure(cli_pal, class = c("cli_pal", class(cli_pal)))
 }
 
-# TODO: a print method. it'd be nice to just be able to set
-# `$messages(include_system_prompt = FALSE)` in elmer:::print.Chat(),
-# but may need to inline it here.
+#' @export
+print.cli_pal <- function(x, ...) {
+  cli::cli_h3(
+    "A {.field {x$.__enclos_env__$private$model@model}}-based cli pal.🤖"
+  )
+}

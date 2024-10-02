@@ -67,7 +67,8 @@ chats.
 library(clipal)
 
 cli_pal()
-#> <Chat messages=0>
+#> 
+#> ── A claude-3-5-sonnet-20240620-based cli pal.🤖
 ```
 
 By default, `cli_pal()` uses Claude Sonnet 3.5 via
