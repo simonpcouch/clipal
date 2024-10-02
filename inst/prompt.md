@@ -45,7 +45,7 @@ rlang::abort(paste0("Found ", n, " things that shouldn't be there. Please remove
 # after:
 cli::cli_abort(
   c(
-    "Found {?was/were} {n} thing{?s} that shouldn't be there.",
+    "Found {n} thing{?s} that shouldn't be there.",
     "i" = "Please remove them."
   )
 )
