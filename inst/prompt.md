@@ -97,6 +97,21 @@ cli::cli_abort(
 )
 ```
 
+When a message line is above 70 characters, just add a line break (no need for any special formatting). Do not provide individual lines above 70 characters. For example:
+
+``` r
+# before:
+rlang::abort(
+  "This is a super duper long error message that is one sentence and would exceed the 70 character limit."
+)
+
+# after
+cli::cli_abort(
+  "This is a super duper long error message that is one sentence 
+   and would exceed the 70 character limit."
+)
+```
+
 # About inline markup in the semantic cli
 
 Here is some documentation on cli markup from the cli package. Use cli markup where applicable.
