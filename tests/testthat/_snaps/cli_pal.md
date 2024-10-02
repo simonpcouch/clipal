@@ -4,7 +4,7 @@
       cli_pal()
     Message
       
-      -- A claude-3-5-sonnet-20240620-based cli pal.🤖 
+      -- A claude-3-5-sonnet-20240620-based cli pal. 
 
 ---
 
@@ -12,7 +12,7 @@
       cli_pal("new_chat_openai", model = "gpt-4o-mini")
     Message
       
-      -- A gpt-4o-mini-based cli pal.🤖 
+      -- A gpt-4o-mini-based cli pal. 
 
 ---
 
@@ -20,5 +20,5 @@
       cli_pal()
     Message
       
-      -- A gpt-4o-mini-based cli pal.🤖 
+      -- A gpt-4o-mini-based cli pal. 
 

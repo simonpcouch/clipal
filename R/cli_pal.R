@@ -46,6 +46,6 @@ cli_pal <- function(fn = getOption(".clipal_fn", default = "new_chat_claude"), .
 #' @export
 print.cli_pal <- function(x, ...) {
   cli::cli_h3(
-    "A {.field {x$.__enclos_env__$private$model@model}}-based cli pal.🤖"
+    "A {.field {x$.__enclos_env__$private$model@model}}-based cli pal."
   )
 }

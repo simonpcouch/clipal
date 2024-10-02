@@ -14,6 +14,7 @@ There have been many interfaces to raise errors with R over the years. A couple 
 Useful links:
 \itemize{
   \item \url{https://github.com/simonpcouch/clipal}
+  \item \url{https://simonpcouch.github.io/clipal/}
   \item Report bugs at \url{https://github.com/simonpcouch/clipal/issues}
 }
 

@@ -1,5 +1,6 @@
 test_that("convert_to_cli works", {
   skip_if(identical(Sys.getenv("ANTHROPIC_API_KEY"), ""))
+  skip_if_not_installed("withr")
   withr::local_options(.clipal_fn = NULL, .clipal_args = NULL)
 
   cli_pal()

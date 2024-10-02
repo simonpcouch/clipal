@@ -1,6 +1,6 @@
 #' Convert erroring code to use cli
 #'
-#' @param x Lines of code that raise an error, as an expression.
+#' @param expr Lines of code that raise an error, as an expression.
 #' @param cli_pal A cli pal created with [cli_pal()].
 #'
 #' @examplesIf FALSE

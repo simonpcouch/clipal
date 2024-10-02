@@ -4,7 +4,7 @@
       .last_cli_pal
     Message
       
-      -- A claude-3-5-sonnet-20240620-based cli pal.🤖 
+      -- A claude-3-5-sonnet-20240620-based cli pal. 
 
 ---
 
@@ -12,5 +12,5 @@
       .last_cli_pal
     Message
       
-      -- A gpt-4o-mini-based cli pal.🤖 
+      -- A gpt-4o-mini-based cli pal. 
 

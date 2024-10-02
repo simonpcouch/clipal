@@ -1,6 +1,7 @@
 test_that("cli pal can vary underlying model", {
   skip_if(identical(Sys.getenv("ANTHROPIC_API_KEY"), ""))
   skip_if(identical(Sys.getenv("OPENAI_API_KEY"), ""))
+  skip_if_not_installed("withr")
   withr::local_options(.clipal_fn = NULL, .clipal_args = NULL)
 
   # defaults to anthropic

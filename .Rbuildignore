@@ -8,3 +8,4 @@ inst/figs/
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+.env

@@ -7,9 +7,9 @@
 convert_to_cli(expr, cli_pal = .last_cli_pal)
 }
 \arguments{
-\item{cli_pal}{A cli pal created with \code{\link[=cli_pal]{cli_pal()}}.}
+\item{expr}{Lines of code that raise an error, as an expression.}
 
-\item{x}{Lines of code that raise an error, as an expression.}
+\item{cli_pal}{A cli pal created with \code{\link[=cli_pal]{cli_pal()}}.}
 }
 \description{
 Convert erroring code to use cli
