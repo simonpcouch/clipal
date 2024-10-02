@@ -19,7 +19,7 @@ developer and more visually pleasing as a user.
 
 In some cases, transitioning is as simple as Finding + Replacing
 `rlang::abort()` to `cli::cli_abort()`. In others, there’s a mess of
-ah-hoc pluralization, `paste0()`s, glue interpolations, and other
+ad-hoc pluralization, `paste0()`s, glue interpolations, and other
 assorted nonsense to sort through. Total pain, especially with thousands
 upon thousands of error messages thrown across the tidyverse, r-lib, and
 tidymodels organizations.
@@ -40,10 +40,11 @@ pak::pak("simonpcouch/clipal")
 Then,
 
 - Ensure that you have an `ANTHROPIC_API_KEY` set in your
-  [`.env`](https://github.com/gaborcsardi/dotenv). If you’re using a
-  different LLM to power the cli pal, see `?cli_pal()` to set default
-  metadata on that model.
-- Assign the “Convert to cli” addin the shortcut “Ctrl+Shift+C”.
+  [`.env`](https://github.com/gaborcsardi/dotenv). If you’d like to use
+  an LLM other than Anthropic’s Claude 3.5 Sonnet to power the cli pal,
+  see `?cli_pal()` to set default metadata on that model.
+- Assign the “Convert to cli” addin the shortcut “Ctrl+Shift+C”. (See
+  instructions below if needed!)
 
 ## Example
 
@@ -68,7 +69,7 @@ library(clipal)
 
 cli_pal()
 #> 
-#> ── A claude-3-5-sonnet-20240620-based cli pal.🤖
+#> ── A claude-3-5-sonnet-20240620-based cli pal.
 ```
 
 By default, `cli_pal()` uses Claude Sonnet 3.5 via

@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 
 A couple years ago, the tidyverse team began migrating to the cli R package for raising errors, transitioning away from base R (e.g. `stop()`), rlang (e.g. `rlang::abort()`), glue, and homegrown combinations of them. cli's new syntax is easier to work with as a developer and more visually pleasing as a user.
 
-In some cases, transitioning is as simple as Finding + Replacing `rlang::abort()` to `cli::cli_abort()`. In others, there's a mess of ah-hoc pluralization, `paste0()`s, glue interpolations, and other assorted nonsense to sort through. Total pain, especially with thousands upon thousands of error messages thrown across the tidyverse, r-lib, and tidymodels organizations.
+In some cases, transitioning is as simple as Finding + Replacing `rlang::abort()` to `cli::cli_abort()`. In others, there's a mess of ad-hoc pluralization, `paste0()`s, glue interpolations, and other assorted nonsense to sort through. Total pain, especially with thousands upon thousands of error messages thrown across the tidyverse, r-lib, and tidymodels organizations.
 
 clipal ("c-l-i pal") is an RStudio add-in that helps you convert your R package to use cli for error messages. It's vaguely correct most of the time, and greatly speeds up the process for converting error messages to cli, in my experience.
 
@@ -36,8 +36,8 @@ pak::pak("simonpcouch/clipal")
 
 Then,
 
-* Ensure that you have an `ANTHROPIC_API_KEY` set in your [`.env`](https://github.com/gaborcsardi/dotenv). If you're using a different LLM to power the cli pal, see `?cli_pal()` to set default metadata on that model. 
-* Assign the "Convert to cli" addin the shortcut "Ctrl+Shift+C".
+* Ensure that you have an `ANTHROPIC_API_KEY` set in your [`.env`](https://github.com/gaborcsardi/dotenv). If you'd like to use an LLM other than Anthropic's Claude 3.5 Sonnet to power the cli pal, see `?cli_pal()` to set default metadata on that model. 
+* Assign the "Convert to cli" addin the shortcut "Ctrl+Shift+C". (See instructions below if needed!)
 
 ## Example
 
