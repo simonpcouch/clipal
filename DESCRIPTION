@@ -1,6 +1,6 @@
 Package: clipal
 Title: Convert to cli errors
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     person("Simon", "Couch", , "simon.couch@posit.co", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5676-5107"))
@@ -16,7 +16,7 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-URL: https://github.com/simonpcouch/clipal
+URL: https://github.com/simonpcouch/clipal, https://simonpcouch.github.io/clipal/
 BugReports: https://github.com/simonpcouch/clipal/issues
 Imports: 
     cli,
