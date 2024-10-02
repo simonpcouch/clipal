@@ -54,7 +54,7 @@
 <!-- badges: start -->
 
 <p>A couple years ago, the tidyverse team began migrating to the cli R package for raising errors, transitioning away from base R (e.g. <code><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop()</a></code>), rlang (e.g. <code><a href="https://rlang.r-lib.org/reference/abort.html" class="external-link">rlang::abort()</a></code>), glue, and homegrown combinations of them. cli’s new syntax is easier to work with as a developer and more visually pleasing as a user.</p>
-<p>In some cases, transitioning is as simple as Finding + Replacing <code><a href="https://rlang.r-lib.org/reference/abort.html" class="external-link">rlang::abort()</a></code> to <code><a href="https://cli.r-lib.org/reference/cli_abort.html" class="external-link">cli::cli_abort()</a></code>. In others, there’s a mess of ah-hoc pluralization, <code><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0()</a></code>s, glue interpolations, and other assorted nonsense to sort through. Total pain, especially with thousands upon thousands of error messages thrown across the tidyverse, r-lib, and tidymodels organizations.</p>
+<p>In some cases, transitioning is as simple as Finding + Replacing <code><a href="https://rlang.r-lib.org/reference/abort.html" class="external-link">rlang::abort()</a></code> to <code><a href="https://cli.r-lib.org/reference/cli_abort.html" class="external-link">cli::cli_abort()</a></code>. In others, there’s a mess of ad-hoc pluralization, <code><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0()</a></code>s, glue interpolations, and other assorted nonsense to sort through. Total pain, especially with thousands upon thousands of error messages thrown across the tidyverse, r-lib, and tidymodels organizations.</p>
 <p>clipal (“c-l-i pal”) is an RStudio add-in that helps you convert your R package to use cli for error messages. It’s vaguely correct most of the time, and greatly speeds up the process for converting error messages to cli, in my experience.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -64,8 +64,8 @@
 <code class="sourceCode R"><span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"simonpcouch/clipal"</span><span class="op">)</span></span></code></pre></div>
 <p>Then,</p>
 <ul>
-<li>Ensure that you have an <code>ANTHROPIC_API_KEY</code> set in your <a href="https://github.com/gaborcsardi/dotenv" class="external-link"><code>.env</code></a>. If you’re using a different LLM to power the cli pal, see <code>?cli_pal()</code> to set default metadata on that model.</li>
-<li>Assign the “Convert to cli” addin the shortcut “Ctrl+Shift+C”.</li>
+<li>Ensure that you have an <code>ANTHROPIC_API_KEY</code> set in your <a href="https://github.com/gaborcsardi/dotenv" class="external-link"><code>.env</code></a>. If you’d like to use an LLM other than Anthropic’s Claude 3.5 Sonnet to power the cli pal, see <code>?cli_pal()</code> to set default metadata on that model.</li>
+<li>Assign the “Convert to cli” addin the shortcut “Ctrl+Shift+C”. (See instructions below if needed!)</li>
 </ul>
 </div>
 <div class="section level2">
@@ -86,7 +86,7 @@
 <span></span>
 <span><span class="fu"><a href="reference/cli_pal.html">cli_pal</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── A claude-3-5-sonnet-20240620-based cli pal.🤖</span></span></code></pre></div>
+<span><span class="co">#&gt; ── A claude-3-5-sonnet-20240620-based cli pal.</span></span></code></pre></div>
 <p>By default, <code><a href="reference/cli_pal.html">cli_pal()</a></code> uses Claude Sonnet 3.5 via <code><a href="https://hadley.github.io/elmer/reference/new_chat_claude.html" class="external-link">elmer::new_chat_claude()</a></code>, though users can choose other models. Then, the <code><a href="reference/convert_to_cli.html">convert_to_cli()</a></code> function takes an R expression that raises a condition and converts it to use cli. At its simplest:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/convert_to_cli.html">convert_to_cli</a></span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop</a></span><span class="op">(</span><span class="st">"An error message."</span><span class="op">)</span><span class="op">)</span></span>
