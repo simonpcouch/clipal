@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-RStudio add-in that helps you convert your R code to use the 'cli' package for error messages using LLMs.
+There have been many interfaces to raise errors with R over the years. A couple years ago, the tidyteam converged on using the 'cli' package and began the cumbersome process of rewriting erroring code. This task is a difficult one to automate, as there are all sorts of weird edge cases and stylistic divergences; "every unhappy family is unhappy in its own way." This RStudio add-in helps you convert your R code to use the 'cli' package for error messages using LLMs.
 }
 \seealso{
 Useful links:
