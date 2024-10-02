@@ -15,6 +15,7 @@ URL: https://github.com/simonpcouch/clipal
 BugReports: https://github.com/simonpcouch/clipal/issues
 Imports: 
     cli,
+    dotenv,
     elmer,
     rlang,
     rstudioapi,

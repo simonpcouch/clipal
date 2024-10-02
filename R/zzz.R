@@ -2,9 +2,7 @@
 
 .onLoad <- function(libname, pkgname) {
   # automatically source .env for API keys on package load
-  if (rlang::is_installed("dotenv")) {
-    library(dotenv)
-  }
+  dotenv::load_dot_env()
 
   rlang::env_bind(
     rlang::ns_env("clipal"),
