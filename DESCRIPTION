@@ -7,8 +7,6 @@ Authors@R:
 Description: RStudio add-in that helps you convert your R code to use the 'cli'
     package for error messages using LLMs.
 License: MIT + file LICENSE
-Suggests: 
-    testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -19,6 +17,9 @@ Imports:
     cli,
     elmer,
     rlang,
+    rstudioapi,
     withr
+Suggests: 
+    testthat (>= 3.0.0)
 Remotes:
     hadley/elmer#42

@@ -39,6 +39,17 @@ pak::pak("simonpcouch/clipal")
 
 ## Example
 
+### RStudio Add-in
+
+The package provides an RStudio add-in “Convert to cli” that we suggest
+registering with the keybinding “Ctrl+Shift+C”. To do so, navigate to
+Tools \> Modify Keyboard Shortcuts \> Search “Convert to cli”, and add
+the keybinding. After selecting some code, press the keyboard:
+
+![](inst/figs/addin.gif)
+
+### In code
+
 The `cli_pal()` function instantiates a cli pal and is a light wrapper
 around functions creating [elmer](https://github.com/hadley/elmer)
 chats.
@@ -88,7 +99,7 @@ It seems to have a decent hold on sprintf-style statements, too:
 convert_to_cli({
   abort(sprintf("No such '%s' function: `%s()`.", package, name))
 })
-#> cli::cli_abort("No such {.pkg {package}} function: {.fn {name}}.")
+#> cli::cli_abort("No such {.pkg {package}} function: {.fn {name}}().")
 ```
 
 TODO: show by function, file, and package…
