@@ -112,6 +112,27 @@ cli::cli_abort(
 )
 ```
 
+Look out for a common pattern where a message includes the phrase "the following" and then includes some enumeration after a hyphen. In that case, include the enumeration in the message itself. For example:
+
+``` r
+# before:
+extra_grid_params <- glue::single_quote(extra_grid_params)
+extra_grid_params <- glue::glue_collapse(extra_grid_params, sep = ", ")
+
+msg <- glue::glue(
+  "The provided `grid` has the following parameter columns that have ",
+  "not been marked for tuning by `tune()`: {extra_grid_params}."
+)
+
+rlang::abort(msg)
+
+# after
+cli::cli_abort(
+  "The provided {.arg grid} has parameter columns {extra_grid_params}
+   that have not been marked for tuning by {.fn tune}."
+)
+```
+
 # About inline markup in the semantic cli
 
 Here is some documentation on cli markup from the cli package. Use cli markup where applicable.
@@ -124,13 +145,12 @@ All text emitted by cli supports glue interpolation. Expressions enclosed by bra
 
 The default theme defines the following inline classes:
 
--   `arg` for a function argument.
--   `cls` for an S3, S4, R6 or other class name.
+-   `arg` for a function argument. Whenever code reads `"The provided 'x' argument"`, just write `"{.arg x}`.
+-   `cls` for an S3, S4, R6 or other class name. If code reads `"Objects of class {class(x)[1]}"`, just write `"{.cls {class(x)}} objects"`.
 -   `code` for a piece of code.
 -   `dt` is used for the terms in a definition list (`cli_dl()`).
 -   `dd` is used for the descriptions in a definition list (`cli_dl()`).
 -   `email` for an email address.
--   `emph` for emphasized text.
 -   `envvar` for the name of an environment variable.
 -   `field` for a generic field, e.g. in a named list.
 -   `file` for a file name.
@@ -138,7 +158,7 @@ The default theme defines the following inline classes:
 -   `fun` same as `fn`.
 -   `kbd` for a keyboard key.
 -   `key` same as `kbd`.
--   `obj_type_friendly` formats the type of an R object in a readable way.
+-   `obj_type_friendly` formats the type of an R object in a readable way. When code reads `"not a {class(x)[1]} object"` or something like that, use `"not {.obj_type_friendly {x}}"`.
 -   `or` changes the string that separates the last two elements of collapsed vectors from "and" to "or".
 -   `path` for a path (the same as `file` in the default theme).
 -   `pkg` for a package name.
@@ -161,7 +181,6 @@ cli_li("An email address: {.email bugs.bunny@acme.com}.")
 cli_li("A URL: {.url https://example.com}.")
 cli_li("An environment variable: {.envvar R_LIBS}.")
 cli_li("`mtcars` is {.obj_type_friendly {mtcars}}")
-cli_end(ul)
 ```
 
 The output with each of these looks like:
