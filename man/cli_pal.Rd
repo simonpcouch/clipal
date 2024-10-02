@@ -7,7 +7,8 @@
 cli_pal(fn = "new_chat_claude", ..., .ns = "elmer")
 }
 \arguments{
-\item{fn}{A \verb{new_*()} function, like from the elmer package.}
+\item{fn}{A \verb{new_*()} function, likely from the elmer package. Defaults
+to \code{\link[elmer:new_chat_claude]{elmer::new_chat_claude()}}.}
 
 \item{...}{Additional arguments to \code{fn}.}
 

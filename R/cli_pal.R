@@ -3,7 +3,8 @@
 #' A light wrapper around elmer chat functions to create a chat object with
 #' a custom system prompt.
 #'
-#' @param fn A `new_*()` function, like from the elmer package.
+#' @param fn A `new_*()` function, likely from the elmer package. Defaults
+#'   to [elmer::new_chat_claude()].
 #' @param .ns The package that the `new_*()` function is exported from.
 #' @param ... Additional arguments to `fn`.
 #'

@@ -39,16 +39,20 @@ pak::pak("simonpcouch/clipal")
 
 ## Example
 
-The `cli_pal()` function instantiates a cli pal (a light wrapper around
-an elmer chat).
+The `cli_pal()` function instantiates a cli pal and is a light wrapper
+around functions creating [elmer](https://github.com/hadley/elmer)
+chats.
 
 ``` r
 library(clipal)
 
-cli_pal <- cli_pal()
+cli_pal()
+#> <Chat messages=0>
 ```
 
-The `convert_to_cli()` function takes an R expression that raises a
+By default, `cli_pal()` uses Claude Sonnet 3.5 via
+`elmer::new_chat_claude()`, though users can choose other models. Then,
+the `convert_to_cli()` function takes an R expression that raises a
 condition and converts it to use cli. At its simplest:
 
 ``` r
@@ -58,6 +62,7 @@ convert_to_cli(stop("An error message."))
 
 The function knows to look for the most recently defined cli pal, but
 you can pass one manually via `convert_to_cli(cli_pal)` if you please.
+
 It can handle surprisingly complex erroring code, too. For example, some
 `paste0()` enumeration and strange line breaking is no issue:
 
@@ -71,12 +76,10 @@ convert_to_cli({
     )
   )
 })
-#> cli::cli_abort(
-#>   c(
-#>     "The model only has prediction types {pred_types}.",
-#>     "i" = "Did you fit the model with {.code silly_head = TRUE}?"
-#>   )
-#> )
+#> cli::cli_abort(c(
+#>   "The model only has prediction types {pred_types}.",
+#>   "i" = "Did you fit the model with {.code silly_head = TRUE}?"
+#> ))
 ```
 
 It seems to have a decent hold on sprintf-style statements, too:

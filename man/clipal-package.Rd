@@ -6,6 +6,8 @@
 \alias{clipal-package}
 \title{clipal: Convert to cli errors}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 RStudio add-in that helps you convert your R code to use the 'cli' package for error messages using LLMs.
 }
 \seealso{
