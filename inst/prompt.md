@@ -112,26 +112,35 @@ cli::cli_abort(
 )
 ```
 
-Look out for a common pattern where a message includes the phrase "the following" and then includes some enumeration after a hyphen. In that case, include the enumeration in the message itself. For example:
+Look out for a common pattern where a message mentions that there's an issue with something and then includes some enumeration after a hyphen. In that case, include the enumeration in the message itself rather than after the hyphen. For example:
 
 ``` r
 # before:
-extra_grid_params <- glue::single_quote(extra_grid_params)
-extra_grid_params <- glue::glue_collapse(extra_grid_params, sep = ", ")
-
 msg <- glue::glue(
-  "The provided `grid` has the following parameter columns that have ",
-  "not been marked for tuning by `tune()`: {extra_grid_params}."
+  "The provided `arg` has the following issues ",
+  "due to incorrect types: {things_that_are_bad}."
 )
 
 rlang::abort(msg)
 
 # after
 cli::cli_abort(
-  "The provided {.arg grid} has parameter columns {extra_grid_params}
-   that have not been marked for tuning by {.fn tune}."
+  "The provided {.arg arg} has issues with {things_that_are_bad}
+   due to incorrect types."
 )
 ```
+
+Or:
+
+``` r
+# before:
+rlang::abort("These arguments are an issue: {things}.")
+
+# after
+cli::cli_abort("The arguments {things} are an issue.")
+```
+
+Do not finish error messages with a hyphen and then some substitution.
 
 # About inline markup in the semantic cli
 
