@@ -9,3 +9,4 @@ inst/figs/
 ^docs$
 ^pkgdown$
 .env
+inst/slides/

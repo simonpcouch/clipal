@@ -6,3 +6,4 @@
 .quarto
 .env
 docs
+inst/slides/
