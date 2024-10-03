@@ -67,6 +67,19 @@ set the <code>.clipal_args</code> option; see examples below.</p></dd>
 <dd><p>The package that the <code>new_*()</code> function is exported from.</p></dd>
 
 </dl></div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>Upon successfully creating a cli pal, this function will assign the
+result to the search path as <code>.last_cli_pal</code>. At that point,
+<code><a href="convert_to_cli.html">convert_to_cli()</a></code> and the RStudio add-in "Convert to cli" know to look
+for <code>.last_cli_pal</code> and you don't need to worry about passing your cli
+pal yourself.</p>
+<p>If you have an Anthropic API key (or another API key and the <code>clipal_*()</code>
+options) set and this package installed, you are ready to using the add-in
+in any R session with no setup or library loading required; the addin knows
+to look for your API credentials and will call both
+this function and <code><a href="convert_to_cli.html">convert_to_cli()</a></code> itself.</p>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
