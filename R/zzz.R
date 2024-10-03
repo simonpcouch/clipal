@@ -3,7 +3,7 @@
 .onLoad <- function(libname, pkgname) {
   # automatically source .env for API keys on package load
   if (file.exists(".env")) {
-    load_dot_env()
+    dotenv::load_dot_env()
   }
 
   rlang::env_bind(
