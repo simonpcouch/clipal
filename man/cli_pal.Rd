@@ -25,6 +25,19 @@ set the \code{.clipal_args} option; see examples below.}
 A light wrapper around elmer chat functions to create a chat object with
 a custom system prompt.
 }
+\details{
+Upon successfully creating a cli pal, this function will assign the
+result to the search path as \code{.last_cli_pal}. At that point,
+\code{\link[=convert_to_cli]{convert_to_cli()}} and the RStudio add-in "Convert to cli" know to look
+for \code{.last_cli_pal} and you don't need to worry about passing your cli
+pal yourself.
+
+If you have an Anthropic API key (or another API key and the \verb{clipal_*()}
+options) set and this package installed, you are ready to using the add-in
+in any R session with no setup or library loading required; the addin knows
+to look for your API credentials and will call both
+this function and \code{\link[=convert_to_cli]{convert_to_cli()}} itself.
+}
 \examples{
 \dontshow{if (FALSE) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # to create a chat with claude:

@@ -11,6 +11,19 @@
 #'   be ignored if supplied. To set persistent defaults,
 #'   set the `.clipal_args` option; see examples below.
 #'
+#' @details
+#' Upon successfully creating a cli pal, this function will assign the
+#' result to the search path as `.last_cli_pal`. At that point,
+#' [convert_to_cli()] and the RStudio add-in "Convert to cli" know to look
+#' for `.last_cli_pal` and you don't need to worry about passing your cli
+#' pal yourself.
+#'
+#' If you have an Anthropic API key (or another API key and the `clipal_*()`
+#' options) set and this package installed, you are ready to using the add-in
+#' in any R session with no setup or library loading required; the addin knows
+#' to look for your API credentials and will call both
+#' this function and [convert_to_cli()] itself.
+#'
 #' @examplesIf FALSE
 #' # to create a chat with claude:
 #' clipal()
