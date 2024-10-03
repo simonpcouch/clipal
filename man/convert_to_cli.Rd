@@ -4,7 +4,10 @@
 \alias{convert_to_cli}
 \title{Convert erroring code to use cli}
 \usage{
-convert_to_cli(expr, cli_pal = .last_cli_pal)
+convert_to_cli(
+  expr,
+  cli_pal = if (exists(".last_cli_pal")) .last_cli_pal else NULL
+)
 }
 \arguments{
 \item{expr}{Lines of code that raise an error, as an expression.}
