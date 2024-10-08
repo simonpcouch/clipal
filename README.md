@@ -29,6 +29,8 @@ package to use cli for error messages. It’s vaguely correct most of the
 time, and greatly speeds up the process for converting error messages to
 cli, in my experience.
 
+**This package is deprecated in favor of the more general [pal](https://github.com/simonpcouch/pal) package. To create a cli pal with pal, use `pal("cli")`.**
+
 ## Installation
 
 You can install clipal like so:
